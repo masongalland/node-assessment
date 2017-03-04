@@ -17,13 +17,23 @@ function genId() {
 }
 
 exports.find = function(key, value) {
+  
   if (!key) {
+
     return index();
   }
 
   assert(value, "Expected a key as well as a value!")
   let results = _.filter(users, user => {
     return user[key] == value;
+  })
+
+  return results[0] ? results : null;
+}
+
+exports.findAge = function(key, value){
+    let results = _.filter(users, user => {
+    return user[key] < value;
   })
 
   return results[0] ? results : null;
